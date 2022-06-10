@@ -26,13 +26,13 @@ export function FeedColumn({
         className={feedItemsWrapper}
       >
         <Stack direction="column-reverse" w="100%">
-          {nfts.length && nfts.map((nft: any) =>
+          {nfts.length ? nfts.map((nft: any) =>
             <NFTFeedRow
               key={`${nft?.token?.collectionAddress}${nft?.token?.tokenId}`}
               tokenContract={nft?.token?.collectionAddress}
               tokenId={nft?.token?.tokenId}
             />
-          )}
+          ) : null}
         </Stack>
       </Box>
     </Stack>

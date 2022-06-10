@@ -9,3 +9,6 @@ export const NFTMediaComponents = {
   NFTCard,
   CollectionThumbnail,
 }
+
+export * from './NFTCard'
+export * from './NFTGrid'

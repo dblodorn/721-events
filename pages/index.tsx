@@ -12,8 +12,9 @@ const Home: NextPage = () => {
   return (
     <PageWrapper direction="column" style={{height: `calc(100vh - ${HEADER_HEIGHT}px)`}}>
       <Seo />
-      <FeedWrapper columns={2}>
+      <FeedWrapper columns={3}>
         <FeedColumn nfts={mints} title="Mints" useBorder/>
+        <FeedColumn nfts={sales} title="Listings" useBorder/>
         <FeedColumn nfts={sales} title="Sales" />
       </FeedWrapper>
     </PageWrapper>

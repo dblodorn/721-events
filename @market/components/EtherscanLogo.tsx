@@ -9,6 +9,8 @@ export function EtherscanLogo({ size = 35 }: { size: number }) {
       }}
       position="relative"
       display="block"
+      borderRadius="round"
+      overflow="hidden"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +23,7 @@ export function EtherscanLogo({ size = 35 }: { size: number }) {
           position: 'absolute',
           inset: 0,
           objectFit: 'contain',
+          backgroundColor: 'white',
         }}
       >
         <g id="etherscan-logo-circle" transform="translate(-219.378 -213.33)">

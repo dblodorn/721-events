@@ -1,10 +1,11 @@
-import { Flex, Label, Icon } from '@zoralabs/zord'
+import { Flex, Label, Icon, Grid } from '@zoralabs/zord'
 import { useNFT } from '@zoralabs/nft-hooks'
 import { CollectionThumbnail } from 'components/media/CollectionThumbnail'
 import { Link } from 'components/Link'
 import { feedRow } from './FeedComponents.css'
 import { NFTOwner } from '@market/components/NFTOwner'
 import { feedRowTitle, titleWrapper, titleScroll } from './FeedComponents.css'
+import { TokenInfoLinks } from 'components/media'
 
 export function NFTFeedRow({
   tokenContract,
@@ -30,22 +31,22 @@ export function NFTFeedRow({
   }
   
   return (
-    <Flex
+    <Grid
       w="100%"
       style={{ overflowX: 'scroll' }}
-      align="center"
-      justify="space-between"
       gap="x4"
       className={[feedRow]}
     >
       <Link href={`/collections/${tokenContract}/${tokenId}`} passHref>
-        <Flex as="a" align="center" gap="x4" w="100%">
-          <CollectionThumbnail
-            tokenId={tokenId}
-            collectionAddress={tokenContract}
-            size="xs"
-            radius='round'
-          />
+        <Flex as="a" align="center" gap="x4" w="100%" h="100%">
+          <Flex>
+            <CollectionThumbnail
+              tokenId={tokenId}
+              collectionAddress={tokenContract}
+              size="xs"
+              radius='round'
+            />
+          </Flex>
           <Flex
             h="100%"
             w="100%"
@@ -59,7 +60,10 @@ export function NFTFeedRow({
           </Flex>
         </Flex>
       </Link>
-      <NFTOwner address={data.nft?.owner?.address} />
-    </Flex>
+      <Flex gap="x4" justify="flex-end">
+        <NFTOwner address={data.nft?.owner?.address} />
+        <TokenInfoLinks nftData={data} />
+      </Flex>
+    </Grid>
   )
 }
