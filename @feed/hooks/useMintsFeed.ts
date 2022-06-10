@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useInterval } from '@market/hooks'
 import { uniqBy } from 'lodash'
 import { recentMints } from '@feed/data/recentMints'
 
@@ -16,23 +15,17 @@ async function fetchMints(count: number) {
       }),
     })
     if (!response.ok) {
-      throw new Error(`Error! status: ${response.status}`);
+      throw new Error(`Error! status: ${response.status}`)
     }
     return response
-  } catch(err) {
+  } catch (err) {
     console.error(err)
   }
 }
 
-export function useMintsFeed({refreshInterval}: {refreshInterval: any}) {
-  const [date, setDate] = useState<any>(undefined)
+export function useMintsFeed({ refreshInterval }: { refreshInterval: any }) {
   const [mints, setMints] = useState<any>([])
   const [initialize, setInitialize] = useState(true)
-
-  useInterval(() => {
-    const date = new Date
-    setDate(date)
-  }, 2000)
 
   useEffect(() => {
     if (!initialize) {
@@ -56,7 +49,7 @@ export function useMintsFeed({refreshInterval}: {refreshInterval: any}) {
             const mintUpdate = data.data.mints.nodes[0]
             let newMint = [...mints, mintUpdate]
             console.log(mintUpdate)
-            newMint = uniqBy(newMint, obj => obj.mint.transactionInfo.transactionHash)
+            newMint = uniqBy(newMint, (obj) => obj.mint.transactionInfo.transactionHash)
             setMints(newMint)
           })
       } catch (err) {

@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css'
 import { atoms } from '@zoralabs/zord'
 import { HEADER_HEIGHT, HEADER_Z } from 'styles/style-constants'
 
-export const TIMER_WIDTH = 300
+export const TIMER_WIDTH = 350
 
 export const footerWrapper = style([
   {

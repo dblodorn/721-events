@@ -64,7 +64,9 @@ export function NFTFeedRow({
               style={{ '--titlePad': '40px' }}
             >
               <Label size="xs">
-                {data.metadata?.name} | {data.nft?.contract.name} | {data.nft?.tokenId}
+                {`${data.metadata?.name ? `${data.metadata?.name}' | '` : ''}`}
+                {`${data.nft?.contract.name ? `${data.nft?.contract.name}' | '` : ''}`}
+                {data.nft?.tokenId}
               </Label>
             </Flex>
           </Flex>

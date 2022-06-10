@@ -55,7 +55,7 @@ function VisionApp({ Component, pageProps }: AppProps) {
           chains={chains}
           coolMode
           theme={darkTheme({
-            accentColor: 'green',
+            accentColor: 'black',
             borderRadius: 'large',
           })}
         >

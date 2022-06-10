@@ -36,7 +36,7 @@ export const background = style([
   {
     width: '100%',
     maxHeight: 'calc(100vh - 30px)',
-    overflowY: 'auto',
+    overflow: 'hidden',
     background: 'black',
     borderRadius: 40,
     boxShadow: '0 0 20px rgba(255, 255, 255, 0.5)',
