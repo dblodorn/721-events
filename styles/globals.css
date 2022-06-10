@@ -1,0 +1,30 @@
+@font-face {
+  font-family: display;
+  src: url('/fonts/IntoDeep.otf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: white!important;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-weight: 300!important;
+  text-transform: uppercase;
+}
+
+:root {
+  --dk-grey: rgba(0, 0, 0, 0.6);
+  --light-grey: rgba(0, 0, 0, 0.125);
+  --border-a: 1px solid white;
+}
+
+html {
+  background-color: black;
+  color: white;
+}
