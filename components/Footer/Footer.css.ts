@@ -47,3 +47,14 @@ export const timerWrapper = style([
     justifyContent: 'center',
   }),
 ])
+
+export const manageLinkWrapper = style([
+  {
+    right: `16px`,
+    bottom: `calc(${HEADER_HEIGHT}px + 24px)`,
+    zIndex: 9000,
+  },
+  atoms({
+    position: 'fixed',
+  }),
+])

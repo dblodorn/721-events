@@ -1,7 +1,8 @@
-import { Box, Label } from '@zoralabs/zord'
+import { Box, Heading } from '@zoralabs/zord'
 import { Link } from 'components/Link'
 import { useAccount } from 'wagmi'
-import { collectionTrigger } from './Header.css'
+import { collectionTrigger } from './Header/Header.css'
+import { manageLinkWrapper } from './Footer/Footer.css'
 
 export function ManageLink() {
   const { data: account } = useAccount()
@@ -11,19 +12,19 @@ export function ManageLink() {
   }
 
   return (
-    <Box>
+    <Box position="fixed" className={manageLinkWrapper}>
       <Link href={`/manage/${account?.address}`}>
-        <Label
-          className={collectionTrigger}
+        <Heading
+          className={[collectionTrigger]}
           py="x2"
-          as="a"
           display="flex"
           align="center"
           h="100%"
-          size="lg"
+          size="sm"
+          as="h1"
         >
           Manage
-        </Label>
+        </Heading>
       </Link>
     </Box>
   )

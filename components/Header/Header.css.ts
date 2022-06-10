@@ -12,12 +12,13 @@ export const headerWrapper = style({
 
 export const collectionTrigger = style([
   {
-    backgroundColor: 'rgba(0,0,0,.1)',
+    backgroundColor: 'white',
+    color: 'black',
   },
   atoms({
-    borderRadius: 'curved',
+    borderRadius: 'round',
     gap: 'x2',
-    px: 'x4',
+    px: 'x6',
   }),
 ])
 

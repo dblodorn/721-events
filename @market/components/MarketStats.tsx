@@ -12,11 +12,11 @@ export function StatBlock({
   statValue: string | number | null | undefined
 }) {
   return (
-    <Stack p="x4" backgroundColor="tertiary" borderRadius="phat" gap="x1">
-      <Text variant="heading-xs" color="secondary" className={lightFont}>
+    <Stack px="x4" py="x2" gap="x1" style={{ border: 'var(--border-b)' }}>
+      <Text variant="label-md" color="secondary" className={lightFont}>
         {statType}
       </Text>
-      <Text variant="heading-xs" className={lightFont}>
+      <Text variant="label-md" className={lightFont}>
         {statValue}
       </Text>
     </Stack>
@@ -40,7 +40,7 @@ export function MarketStats({
   )
 
   return (
-    <Flex justify="center" mb="x10">
+    <Flex justify="flex-start" my="x6">
       <Flex gap="x4">
         <StatBlock statType="Owners" statValue={aggregateStat?.ownerCount} />
         <StatBlock statType="Items" statValue={aggregateStat?.nftCount} />

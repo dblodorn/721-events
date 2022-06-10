@@ -1,6 +1,11 @@
 import { Flex, Heading } from '@zoralabs/zord'
 import Marquee from 'react-fast-marquee'
-import { footerWrapper, timerWrapper, marqueeWrapper } from './Footer.css'
+import {
+  footerWrapper,
+  timerWrapper,
+  marqueeWrapper,
+  manageLinkWrapper,
+} from './Footer.css'
 import { useStopwatch } from 'react-timer-hook'
 import { Title } from 'components/Title'
 

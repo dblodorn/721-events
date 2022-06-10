@@ -1,9 +1,11 @@
 import { style } from '@vanilla-extract/css'
 import { atoms } from '@zoralabs/zord'
+import { HEADER_HEIGHT } from 'styles/style-constants'
 
 export const nftGridWrapper = style([
   {
-    gridTemplateColumns: 'repeat(4, 1fr)',
+    gridTemplateColumns: '1fr',
+    paddingBottom: HEADER_HEIGHT * 2,
   },
   atoms({
     w: '100%',
@@ -15,10 +17,8 @@ export const nftGridWrapper = style([
 export const cardWrapper = style([
   {
     backgroundColor: 'black',
+    borderBottom: 'var(--border-a)',
   },
-  atoms({
-    borderRadius: 'phat',
-  }),
 ])
 
 export const titleWrapper = style([
@@ -28,6 +28,13 @@ export const titleWrapper = style([
   atoms({
     w: '100%',
   }),
+])
+
+export const imageWrapper = style([
+  {
+    width: '50vmin',
+    height: '50vmin',
+  },
 ])
 
 export const titleScroll = style([

@@ -1,11 +1,10 @@
 import type { NextPage } from 'next'
 import { PageWrapper } from 'components/PageWrapper'
 import { collectionService, CollectionServiceProps } from 'services/collectionService'
-import { useEffect } from 'react'
 import { NFTGrid } from 'components/media/NFTGrid'
 import { MarketStats } from '@market/components/MarketStats'
 import { CollectionHeader } from 'components/CollectionHeader'
-import { useCollectionsContext } from 'providers/CollectionsProvider'
+import { Flex } from '@zoralabs/zord'
 
 /* @ts-ignore */
 const Collection: NextPage = ({
@@ -16,14 +15,19 @@ const Collection: NextPage = ({
   collection,
 }: CollectionServiceProps) => {
   return (
-    <PageWrapper p="x4" direction="column" gap="x4">
-      <CollectionHeader collection={collection} aggregateStats={aggregateStats} />
-      <MarketStats aggregateStats={aggregateStats} />
+    <PageWrapper direction="column">
+      <Flex
+        direction="column"
+        w="100%"
+        style={{ borderBottom: 'var(--border-a)' }}
+        px="x4"
+        pt="x2"
+      >
+        <CollectionHeader collection={collection} aggregateStats={aggregateStats} />
+        <MarketStats aggregateStats={aggregateStats} />
+      </Flex>
       {contractAddress && (
-        <NFTGrid
-          contractAddress={[contractAddress]}
-          initialPage={initialPage}
-        />
+        <NFTGrid contractAddress={[contractAddress]} initialPage={initialPage} />
       )}
     </PageWrapper>
   )

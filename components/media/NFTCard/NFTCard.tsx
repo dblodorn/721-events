@@ -1,10 +1,16 @@
 import { useMemo } from 'react'
-import { Stack, Box, Flex, Heading, Separator } from '@zoralabs/zord'
+import { Stack, Box, Flex, Heading, Display, Separator } from '@zoralabs/zord'
 import { Link } from 'components/Link'
 import { NFTObject } from '@zoralabs/nft-hooks/dist/types/NFTInterface'
 import { NFTCardMarket } from '@market'
 import { useRawImageTransform } from '@feed/hooks'
-import { cardWrapper, titleWrapper, titleScroll, titleHeading } from 'components/media/NftMedia.css'
+import {
+  cardWrapper,
+  titleWrapper,
+  titleScroll,
+  titleHeading,
+  imageWrapper,
+} from 'components/media/NftMedia.css'
 import { CollectionThumbnail } from 'components/media/CollectionThumbnail'
 
 export function NFTCard({ nftData }: { nftData: NFTObject }) {
@@ -22,20 +28,24 @@ export function NFTCard({ nftData }: { nftData: NFTObject }) {
   }
 
   return (
-    <Stack w="100%" position="relative" overflow="hidden" className={cardWrapper}>
+    <Flex w="100%" position="relative" overflow="hidden" className={cardWrapper}>
       <Link href={`/collections/${nft?.contract.address}/${nft?.tokenId}`}>
-        <Box w="100%">
-          <Box as="img" src={image} w="100%" />
+        <Box className={imageWrapper} style={{ aspectRatio: '1/1' }} position="relative">
+          <Box as="img" src={image} w="100%" h="100%" position="absolute" inset="x0" />
         </Box>
       </Link>
-      <Stack gap="x2" mt="x2" px="x4" pb="x4">
+      <Stack gap="x2" mt="x2" px="x4" pb="x4" w="100%">
         <Flex
           className={[titleWrapper, useTitleScroll && titleScroll]}
           style={{ '--titlePad': titleScroll ? '40px' : '0px' }}
         >
-          <Heading as="h4" size="sm" className={titleHeading}>
+          <Display
+            as="h4"
+            size="lg"
+            className={[titleHeading, 'bd-console-italic outline-font']}
+          >
             {metadata?.name}
-          </Heading>
+          </Display>
         </Flex>
         <Flex align="center" gap="x2" justify="space-between">
           <Link href={`/collections/${nft?.contract.address}`} passHref>
@@ -52,6 +62,6 @@ export function NFTCard({ nftData }: { nftData: NFTObject }) {
         <Separator mt="x1" />
         <NFTCardMarket nftData={nftData} />
       </Stack>
-    </Stack>
+    </Flex>
   )
 }

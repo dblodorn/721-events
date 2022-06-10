@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import { PageWrapper } from 'components/PageWrapper'
 import { HEADER_HEIGHT } from 'styles/style-constants'
 import { Seo } from 'components/Seo'
+import { ManageLink } from 'components/ManageLink'
 
 /* FEED */
 import { useFeedProvider, FeedColumn, FeedWrapper, FeedTypes } from '@feed'
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
       style={{ height: `calc(100vh - ${HEADER_HEIGHT}px)` }}
     >
       <Seo />
+      <ManageLink />
       <FeedWrapper columns={3}>
         <FeedColumn
           nfts={v3asksListing}

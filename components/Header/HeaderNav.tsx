@@ -1,4 +1,4 @@
-import { Flex, Box } from '@zoralabs/zord'
+import { Flex } from '@zoralabs/zord'
 import Marquee from 'react-fast-marquee'
 import { Link } from 'components/Link'
 import { Title } from 'components/Title'

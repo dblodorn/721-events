@@ -16,8 +16,8 @@ const NFT: NextPage = () => {
   )
 
   return (
-    <PageWrapper p="x4" direction="column" gap="x4">
-      <Box style={{ width: '400px' }}>{data && <NFTCard nftData={data} />}</Box>
+    <PageWrapper p="x0" direction="column" gap="x4">
+      <Box>{data && <NFTCard nftData={data} />}</Box>
     </PageWrapper>
   )
 }
