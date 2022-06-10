@@ -1,7 +1,7 @@
+import useSWR from 'swr'
 import { Chain, Network } from '@zoralabs/zdk/dist/queries/queries-sdk'
 import { Collection, AggregateStat } from '@zoralabs/zdk/dist/queries/queries-sdk'
 import { zdkService } from 'utils/zdk'
-import useSWR from 'swr'
 import { collectionAddresses } from 'utils/collection-addresses'
 import { useEffect } from 'react'
 
@@ -10,7 +10,7 @@ const networkInput = {
   network: Network.Ethereum,
 }
 
-export type CollectionsData = {
+export type CollectionsWithStatsData = {
   collectionInfo: Collection
   aggregateStat: AggregateStat
 }
@@ -52,7 +52,7 @@ const fetchCollections = async (collections: string[]) => {
   }
 }
 
-export function useCollections() {
+export function useCollectionsWithStats() {
   const { data, error } = useSWR([collectionAddresses], fetchCollections)
   useEffect(() => {
     console.log('collections', data, error)

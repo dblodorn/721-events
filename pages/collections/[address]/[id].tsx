@@ -4,7 +4,7 @@ import { Heading, Box } from '@zoralabs/zord'
 import { useRouter } from 'next/router'
 import { useNFT } from '@zoralabs/nft-hooks'
 import { RawDisplayer } from 'components/utils'
-import { NFTCard } from '@media/NFTCard'
+import { NFTCard } from 'components/media/NFTCard'
 
 const NFT: NextPage = () => {
   const { query } = useRouter()

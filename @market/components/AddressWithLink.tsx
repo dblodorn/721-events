@@ -34,8 +34,8 @@ export function AddressWithLink({
       rel="noreferrer"
       {...props}
     >
-      <Label>{ensName && useEns ? ensName : shortAddress}</Label>
-      <Icon id="ArrowRightAngle" />
+      <Label size="xs">{ensName && useEns ? ensName : shortAddress}</Label>
+      <Icon id="ArrowRightAngle" size="sm"/>
     </Flex>
   )
 }

@@ -1,4 +1,4 @@
-export const HEADER_HEIGHT = 104
+export const HEADER_HEIGHT = 80
 export const HEADER_Z = 100
 
 export const MAX_WIDTH = {

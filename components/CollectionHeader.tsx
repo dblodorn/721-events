@@ -3,7 +3,6 @@ import {
   Collection,
   CollectionStatsAggregateQuery,
 } from '@zoralabs/zdk/dist/queries/queries-sdk'
-import { lightFont } from 'styles/styles.css'
 
 export function CollectionHeader({
   collection,
@@ -15,7 +14,7 @@ export function CollectionHeader({
   return (
     <Stack align="center">
       <Display as="h1">{collection.name}</Display>
-      <Paragraph size="lg" className={lightFont} color="tertiary">
+      <Paragraph size="lg" color="tertiary">
         {aggregateStats.aggregateStat.nftCount} NFTs
       </Paragraph>
       {collection.description !== "''" && collection.description && (

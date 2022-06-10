@@ -4,10 +4,7 @@ import {
   Chain,
   Collection,
   CollectionStatsAggregateQuery,
-  MarketCategory,
   Network,
-  SortDirection,
-  TokenSortKey,
 } from '@zoralabs/zdk/dist/queries/queries-sdk'
 import { NFTObject } from '@zoralabs/nft-hooks'
 import { GetServerSideProps } from 'next'
@@ -43,14 +40,9 @@ export async function collectionService({ params }: CollectionParamsProps) {
         where: {
           collectionAddresses: [tokenAddress],
         },
-        sort: {
-          sortDirection: SortDirection.Desc,
-          sortAxis: MarketCategory.Ask,
-          sortKey: TokenSortKey.NativePrice,
-        },
         filter: {},
         pagination: {
-          limit: 9,
+          limit: 12,
         },
         includeFullDetails: true,
       })
@@ -60,7 +52,7 @@ export async function collectionService({ params }: CollectionParamsProps) {
           collectionAddresses: [tokenAddress],
         },
         pagination: {
-          limit: 9,
+          limit: 12,
         },
       })
     }

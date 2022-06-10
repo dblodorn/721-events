@@ -1,10 +1,10 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { lightTheme } from '@zoralabs/zord'
+import { lightTheme, darkTheme } from '@zoralabs/zord'
 
 class MyDocument extends Document {
   render() {
     return (
-      <Html className={lightTheme}>
+      <Html className={darkTheme}>
         <Head></Head>
         <body>
           <Main />

@@ -17,7 +17,7 @@ export function NFTOwner({
 
   return (
     <Stack align={align === 'left' ? 'flex-start' : 'flex-end'} justify="space-between">
-      <Text variant="label-lg" align={align} className={lightFont} color="tertiary">
+      <Text variant="label-xs" align={align} className={lightFont} color="tertiary">
         Owned by
       </Text>
       <AddressWithLink address={address} />
