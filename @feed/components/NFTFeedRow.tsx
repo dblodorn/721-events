@@ -1,4 +1,4 @@
-import { Flex, Label, Icon, Grid } from '@zoralabs/zord'
+import { Flex, Label, Icon, Grid, Box } from '@zoralabs/zord'
 import { useNFT } from '@zoralabs/nft-hooks'
 import { CollectionThumbnail } from 'components/media/CollectionThumbnail'
 import { Link } from 'components/Link'
@@ -6,16 +6,20 @@ import { feedRow } from './FeedComponents.css'
 import { NFTOwner } from '@market/components/NFTOwner'
 import { feedRowTitle, titleWrapper, titleScroll } from './FeedComponents.css'
 import { TokenInfoLinks } from 'components/media'
+import { FeedTypes } from './FeedColumn'
+import { V3Ask } from '@market'
 
 export function NFTFeedRow({
   tokenContract,
-  tokenId
+  tokenId,
+  feedType,
 }: {
-  tokenContract: string,
+  tokenContract: string
   tokenId: string
+  feedType?: FeedTypes
 }) {
   const { data } = useNFT(tokenContract, tokenId)
-  
+
   if (!data) {
     return (
       <Flex
@@ -29,38 +33,45 @@ export function NFTFeedRow({
       </Flex>
     )
   }
-  
+
   return (
     <Grid
       w="100%"
-      style={{ overflowX: 'scroll' }}
       gap="x4"
       className={[feedRow]}
+      style={{
+        gridTemplateColumns: `${
+          feedType === FeedTypes.V3_LISTING ? '2.5fr 1.25fr 1.5fr' : '4fr 1.5fr'
+        }`,
+      }}
     >
-      <Link href={`/collections/${tokenContract}/${tokenId}`} passHref>
-        <Flex as="a" align="center" gap="x4" w="100%" h="100%">
-          <Flex>
-            <CollectionThumbnail
-              tokenId={tokenId}
-              collectionAddress={tokenContract}
-              size="xs"
-              radius='round'
-            />
+      <Box>
+        <Link href={`/collections/${tokenContract}/${tokenId}`} passHref>
+          <Flex align="center" gap="x4" w="100%" h="100%">
+            <Flex>
+              <CollectionThumbnail
+                tokenId={tokenId}
+                collectionAddress={tokenContract}
+                size="xs"
+                radius="round"
+              />
+            </Flex>
+            <Flex
+              h="100%"
+              w="100%"
+              align="center"
+              className={[feedRowTitle, titleWrapper, titleScroll]}
+              style={{ '--titlePad': '40px' }}
+            >
+              <Label size="xs">
+                {data.metadata?.name} | {data.nft?.contract.name} | {data.nft?.tokenId}
+              </Label>
+            </Flex>
           </Flex>
-          <Flex
-            h="100%"
-            w="100%"
-            align="center"
-            className={[feedRowTitle, titleWrapper, titleScroll]}
-            style={{ '--titlePad': '40px' }}
-          >
-            <Label size="xs">
-              {data.metadata?.name} | {data.nft?.contract.name} | {data.nft?.tokenId}
-            </Label>
-          </Flex>
-        </Flex>
-      </Link>
-      <Flex gap="x4" justify="flex-end">
+        </Link>
+      </Box>
+      {feedType === FeedTypes.V3_LISTING && <V3Ask nftData={data} useBorder />}
+      <Flex gap="x4" justify="flex-end" style={{ borderLeft: 'var(--border-b)' }}>
         <NFTOwner address={data.nft?.owner?.address} />
         <TokenInfoLinks nftData={data} />
       </Flex>

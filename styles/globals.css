@@ -3,18 +3,23 @@
   src: url('/fonts/IntoDeep.otf');
 }
 
+@font-face {
+  font-family: bdConsoleItalic;
+  src: url('/fonts/CONSRI__.TTF');
+}
+
 * {
   box-sizing: border-box;
 }
 
 a {
-  color: white!important;
+  color: white !important;
   text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
-  font-weight: 300!important;
+  font-weight: 300 !important;
   text-transform: uppercase;
 }
 
@@ -22,9 +27,24 @@ a {
   --dk-grey: rgba(0, 0, 0, 0.6);
   --light-grey: rgba(0, 0, 0, 0.125);
   --border-a: 1px solid white;
+  --border-b: 1px dotted rgba(255, 255, 255, 0.5);
 }
 
 html {
   background-color: black;
   color: white;
+}
+
+.bd-console-italic,
+.bd-console-italic * {
+  font-family: bdConsoleItalic, monospace !important;
+}
+
+.outline-font,
+.outline-font * {
+  color: black;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: white;
+  letter-spacing: 5px;
 }

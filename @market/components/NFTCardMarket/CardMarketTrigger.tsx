@@ -1,12 +1,12 @@
-import { Heading, HeadingProps } from '@zoralabs/zord'
+import { Label, LabelProps } from '@zoralabs/zord'
 
-interface TriggerProps extends HeadingProps {
+interface TriggerProps extends LabelProps {
   cta: string
 }
 
 export function CardMarketTrigger({ cta, ...props }: TriggerProps) {
   return (
-    <Heading
+    <Label
       px="x6"
       py="x2"
       mt="x2"
@@ -14,10 +14,11 @@ export function CardMarketTrigger({ cta, ...props }: TriggerProps) {
       size="xs"
       color="primary"
       borderRadius="curved"
-      backgroundColor="tertiary"
+      backgroundColor="primary"
+      style={{ border: 'var(--border-a)' }}
       {...props}
     >
       {cta}
-    </Heading>
+    </Label>
   )
 }

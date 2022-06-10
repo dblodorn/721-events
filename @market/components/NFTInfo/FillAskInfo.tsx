@@ -20,7 +20,9 @@ export function FillAskInfo({ nft, askPrice }: { nft: NFTObject; askPrice?: stri
   return (
     <>
       <Flex justify="space-between">
-        <Label color="tertiary">Owned by</Label>
+        <Label size="xs" color="tertiary">
+          Owned by
+        </Label>
         {nft?.nft?.owner?.address ? (
           <AddressWithLink address={nft.nft.owner.address} />
         ) : (
@@ -28,7 +30,9 @@ export function FillAskInfo({ nft, askPrice }: { nft: NFTObject; askPrice?: stri
         )}
       </Flex>
       <Flex justify="space-between">
-        <Label color="tertiary">Minted by</Label>
+        <Label size="xs" color="tertiary">
+          Minted by
+        </Label>
         {nft?.nft?.minted?.address ? (
           <AddressWithLink address={nft.nft.minted.address} />
         ) : (
@@ -38,8 +42,12 @@ export function FillAskInfo({ nft, askPrice }: { nft: NFTObject; askPrice?: stri
       <Stack align="flex-end">
         {askPrice && (
           <Flex justify="space-between" align="center" w="100%">
-            <Label color="tertiary">Price:</Label>
-            <Heading size="md">{cryptoVal}</Heading>
+            <Label size="xs" color="tertiary">
+              Price:
+            </Label>
+            <Heading size="sm" as="h2">
+              {cryptoVal}
+            </Heading>
           </Flex>
         )}
         {account?.address && <WalletBalance address={account.address} />}

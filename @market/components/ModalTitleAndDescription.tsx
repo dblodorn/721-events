@@ -14,7 +14,12 @@ export function ModalTitleAndDescription({
   return (
     <Box {...props}>
       {!!title && (
-        <Heading size="md" mb={!!description ? 'x2' : 'x0'}>
+        <Heading
+          as="h2"
+          size="sm"
+          className={['bd-console-italic outline-font']}
+          mb={!!description ? 'x2' : 'x0'}
+        >
           {title}
         </Heading>
       )}

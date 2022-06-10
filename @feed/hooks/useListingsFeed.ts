@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { uniqBy } from 'lodash'
-import { recentSales } from '@feed/data'
+import { recentAskListings } from '@feed/data'
 
-async function fetchGraphQL(count: number) {
+async function fetchRecentAsksListings(count: number) {
   try {
     const response = await fetch(process.env.NEXT_PUBLIC_GALACTUS_BASE_URL as string, {
       method: 'POST',
@@ -11,7 +11,7 @@ async function fetchGraphQL(count: number) {
       },
       cache: 'no-store',
       body: JSON.stringify({
-        query: recentSales(count),
+        query: recentAskListings(count),
       }),
     })
     if (!response.ok) {
@@ -23,18 +23,18 @@ async function fetchGraphQL(count: number) {
   }
 }
 
-export function useSalesFeed({ refreshInterval }: { refreshInterval: any }) {
-  const [sales, setSales] = useState<any>([])
-  const [initialize, setInitialize] = useState(true)
+export function useListingsFeed({ refreshInterval }: { refreshInterval: any }) {
+  const [events, setEvents] = useState<any>([])
+  const [initialize, setInitialize] = useState(false)
 
   useEffect(() => {
     if (!initialize) {
       try {
-        fetchGraphQL(15)
+        fetchRecentAsksListings(20)
           /* @ts-ignore */
           .then((response) => response.json())
           .then((data) => {
-            setSales(data.data.sales.nodes)
+            setEvents(data.data.events.nodes)
             setInitialize(true)
           })
       } catch (err) {
@@ -42,14 +42,14 @@ export function useSalesFeed({ refreshInterval }: { refreshInterval: any }) {
       }
     } else {
       try {
-        fetchGraphQL(1)
+        fetchRecentAsksListings(1)
           /* @ts-ignore */
           .then((response) => response.json())
           .then((data) => {
-            const salesUpdate = data.data.sales.nodes[0]
-            let newSale = [...sales, salesUpdate]
-            newSale = uniqBy(newSale, (obj) => obj.sale.transactionInfo.transactionHash)
-            setSales(newSale)
+            const eventsUpdate = data.data.events.nodes[0]
+            let newEvent = [...events, eventsUpdate]
+            newEvent = uniqBy(newEvent, (obj) => obj.transactionInfo.transactionHash)
+            setEvents(newEvent)
           })
       } catch (err) {
         console.error(err)
@@ -58,6 +58,6 @@ export function useSalesFeed({ refreshInterval }: { refreshInterval: any }) {
   }, [refreshInterval])
 
   return {
-    sales,
+    v3asksListing: events,
   }
 }

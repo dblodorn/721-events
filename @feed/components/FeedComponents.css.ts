@@ -15,12 +15,12 @@ export const feedRow = style([
   {
     height: FEED_ROW_HEIGHT,
     borderBottom: '1px solid rgba(255,255,255,0.25)',
-    gridTemplateColumns: '4fr 1.5fr'
+    overflowX: 'scroll',
   },
   atoms({
     alignItems: 'center',
-    px: 'x3'
-  })
+    px: 'x3',
+  }),
 ])
 
 export const feedHeader = style([
@@ -30,8 +30,8 @@ export const feedHeader = style([
   },
   atoms({
     alignItems: 'center',
-    px: 'x3'
-  })
+    px: 'x3',
+  }),
 ])
 
 export const feedItemsWrapper = style({

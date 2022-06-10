@@ -5,7 +5,8 @@ const MODAL_BACKDROP_LAYER = 2000
 
 export const overlay = style([
   {
-    background: 'rgba(0, 0, 0, 0.45)',
+    background: 'rgba(0, 0, 0, 0.5)',
+    backdropFilter: 'blur(5px)',
     inset: 0,
     placeItems: 'center',
     zIndex: MODAL_BACKDROP_LAYER,
@@ -17,11 +18,10 @@ export const content = style([
   {
     position: 'fixed',
     left: '50%',
-    top: '40%',
-    transform: 'translate(-50%)',
+    top: '50%',
+    transform: 'translateX(-50%) translateY(-50%)',
     width: 'calc(100vw - 30px)',
     maxWidth: 750,
-
     zIndex: MODAL_BACKDROP_LAYER + 1,
     selectors: {
       '&:focus': {
@@ -37,9 +37,9 @@ export const background = style([
     width: '100%',
     maxHeight: 'calc(100vh - 30px)',
     overflowY: 'auto',
-    background: 'white',
+    background: 'black',
     borderRadius: 40,
-    boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)',
+    boxShadow: '0 0 20px rgba(255, 255, 255, 0.5)',
     animation: `0.3s cubic-bezier(0.65, 0, 0.35, 1), ${keyframes({
       '0%': { opacity: 0, transform: 'scale(0.95)' },
       '100%': { opacity: 1, transform: 'scale(1)' },

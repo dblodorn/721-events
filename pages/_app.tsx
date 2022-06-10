@@ -20,16 +20,17 @@ import { FeedProvider } from '@feed'
 import { HeaderComposition, FooterComposition } from 'components'
 
 import '@zoralabs/zord/index.css'
-import '../styles/globals.css'
 import '../styles/reset.css'
 import 'styles/styles.css'
+import '../styles/globals.css'
 
 const infuraId = process.env.INFURA_ID
 
 // const chains = defaultChains
-const { chains, provider } = configureChains([chain.mainnet], [
-  apiProvider.infura(infuraId),
-])
+const { chains, provider } = configureChains(
+  [chain.mainnet],
+  [apiProvider.infura(infuraId)]
+)
 
 const { connectors } = getDefaultWallets({
   appName: 'Contract Manager',
@@ -45,8 +46,8 @@ const wagmiClient = createClient({
 export const strategy = new ZDKFetchStrategy('1', GALACTUS_BASE_URL)
 
 function VisionApp({ Component, pageProps }: AppProps) {
-  const AnyComponent = Component as any;
-  
+  const AnyComponent = Component as any
+
   return (
     <WagmiProvider client={wagmiClient}>
       <NFTFetchConfiguration networkId="1" strategy={strategy}>

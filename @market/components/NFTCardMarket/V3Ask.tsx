@@ -10,7 +10,13 @@ import { CardMarketTrigger } from './CardMarketTrigger'
 import { useIsOwner } from '@market/hooks/useIsOwner'
 import { ManageOwnedToken } from './ManageOwnedToken'
 
-export function V3Ask({ nftData }: { nftData: NFTObject }) {
+export function V3Ask({
+  nftData,
+  useBorder,
+}: {
+  nftData: NFTObject
+  useBorder?: boolean
+}) {
   const { nft, metadata, markets } = nftData
   const { ask } = useRelevantMarket(markets)
 
@@ -21,14 +27,17 @@ export function V3Ask({ nftData }: { nftData: NFTObject }) {
   }
 
   return (
-    <>
+    <Flex
+      style={{ borderLeft: `${useBorder ? 'var(--border-b)' : ''}` }}
+      pl={useBorder ? 'x3' : 'x0'}
+    >
       {ask && ask.status === MARKET_INFO_STATUSES.ACTIVE ? (
-        <Flex w="100%" justify="space-between" align="flex-end">
+        <Flex w="100%" justify="space-between" align="center" h="100%">
           <Stack>
-            <Text variant="heading-xs" className={lightFont} color="tertiary">
+            <Text variant="label-xs" className={lightFont} color="tertiary">
               Price
             </Text>
-            <Text variant="heading-xs" className={lightFont}>
+            <Text variant="label-xs" className={lightFont}>
               {ask.amount?.amount.value} {ask.amount?.symbol}
             </Text>
           </Stack>
@@ -63,22 +72,19 @@ export function V3Ask({ nftData }: { nftData: NFTObject }) {
               {ask?.status === MARKET_INFO_STATUSES.COMPLETE ? (
                 <Flex justify="space-between" w="100%">
                   <Stack>
-                    <Text variant="label-lg" className={lightFont} color="tertiary">
+                    <Text variant="label-xs" className={lightFont} color="tertiary">
                       Sold on Chain for
                     </Text>
-                    <Text variant="heading-xs" className={lightFont}>
+                    <Text variant="label-xs" className={lightFont}>
                       {ask.amount?.amount.value} {ask.amount?.symbol}
                     </Text>
                   </Stack>
-                  <NFTOwner address={ask.raw.properties.buyer} />
                 </Flex>
-              ) : (
-                <NFTOwner address={nft?.owner?.address} align="left" />
-              )}
+              ) : null}
             </>
           )}
         </>
       )}
-    </>
+    </Flex>
   )
 }

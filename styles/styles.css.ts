@@ -11,7 +11,7 @@ globalStyle('*', {
 })
 
 globalStyle('h1, h2, h3', {
-  fontFamily: "'display',  monospace!important",
+  fontFamily: "'display', monospace!important",
 })
 
 globalStyle('light-font', {
