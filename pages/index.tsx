@@ -13,23 +13,25 @@ const Home: NextPage = () => {
   const { sales, mints, v3asksListing } = useFeedProvider()
 
   return (
-    <PageWrapper
-      direction="column"
-      style={{ height: `calc(100vh - ${HEADER_HEIGHT}px)` }}
-    >
-      <Seo />
+    <>
+      <PageWrapper
+        direction="column"
+        style={{ height: `calc(100vh - ${HEADER_HEIGHT}px)` }}
+      >
+        <Seo />
+        <FeedWrapper columns={3}>
+          <FeedColumn
+            nfts={v3asksListing}
+            title="On Chain Listings"
+            useBorder
+            feedType={FeedTypes.V3_LISTING}
+          />
+          <FeedColumn nfts={mints} title="Mints" useBorder />
+          <FeedColumn nfts={sales} title="Sales" />
+        </FeedWrapper>
+      </PageWrapper>
       <ManageLink />
-      <FeedWrapper columns={3}>
-        <FeedColumn
-          nfts={v3asksListing}
-          title="On Chain Listings"
-          useBorder
-          feedType={FeedTypes.V3_LISTING}
-        />
-        <FeedColumn nfts={mints} title="Mints" useBorder />
-        <FeedColumn nfts={sales} title="Sales" />
-      </FeedWrapper>
-    </PageWrapper>
+    </>
   )
 }
 
