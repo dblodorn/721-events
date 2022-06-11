@@ -19,7 +19,7 @@ export function NFTFeedRow({
   feedType?: FeedTypes
 }) {
   const { data } = useNFT(tokenContract, tokenId)
-
+  console.log(data)
   if (!data) {
     return (
       <Flex

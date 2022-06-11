@@ -26,7 +26,7 @@ export function FeedProvider({ ...props }) {
   useInterval(() => {
     const date = new Date()
     setDate(date)
-  }, 2000)
+  }, 3000)
 
   return (
     <FeedContext.Provider
