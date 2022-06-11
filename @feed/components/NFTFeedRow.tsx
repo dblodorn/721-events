@@ -74,7 +74,7 @@ export function NFTFeedRow({
       </Box>
       {feedType === FeedTypes.V3_LISTING && <V3Ask nftData={data} useBorder />}
       <Flex gap="x4" justify="flex-end" style={{ borderLeft: 'var(--border-b)' }}>
-        <NFTOwner address={data.nft?.owner?.address} />
+        <NFTOwner address={data.nft?.owner?.address} useEtherscan={false} />
         <TokenInfoLinks nftData={data} />
       </Flex>
     </Grid>
