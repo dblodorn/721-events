@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { Stack, Box, Flex, Heading, Display, Separator } from '@zoralabs/zord'
 import { Link } from 'components/Link'
 import { NFTObject } from '@zoralabs/nft-hooks/dist/types/NFTInterface'
@@ -16,12 +16,19 @@ import { CollectionThumbnail } from 'components/media/CollectionThumbnail'
 export function NFTCard({ nftData }: { nftData: NFTObject }) {
   const { metadata, media, nft } = nftData
   const { image } = useRawImageTransform(media?.image?.uri)
+  const { image: animationUrl } = useRawImageTransform(metadata?.raw?.animation_url)
 
   const useTitleScroll = useMemo(() => {
     if (metadata && metadata?.name) {
       return metadata?.name.split('').length > 25
     }
   }, [metadata])
+
+  const isAudio = useMemo(() => metadata?.raw?.mimeType.startsWith('audio'), [metadata])
+
+  useEffect(() => {
+    console.log(isAudio, animationUrl)
+  }, [isAudio, animationUrl])
 
   if (!nft) {
     return null
@@ -60,6 +67,7 @@ export function NFTCard({ nftData }: { nftData: NFTObject }) {
           </Link>
         </Flex>
         <Separator mt="x1" />
+        {isAudio && <audio src={animationUrl} controls />}
         <NFTCardMarket nftData={nftData} />
       </Stack>
     </Flex>
