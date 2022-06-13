@@ -24,7 +24,14 @@ export function NFTCard({ nftData }: { nftData: NFTObject }) {
     }
   }, [metadata])
 
-  const isAudio = useMemo(() => metadata?.raw?.mimeType.startsWith('audio'), [metadata])
+  const isAudio = useMemo(() => {
+    try {
+      return metadata?.raw?.mimeType?.startsWith('audio')
+    } catch (err) {
+      console.error(err)
+      return false
+    }
+  }, [metadata])
 
   useEffect(() => {
     console.log(isAudio, animationUrl)
